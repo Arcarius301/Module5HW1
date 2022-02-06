@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Module5HW1.Services.Abstractions;
 
 namespace Module5HW1.Services
 {
-    public class ConfigureService
+    public class ConfigureService : IConfigureService
     {
         public ConfigureService()
         {

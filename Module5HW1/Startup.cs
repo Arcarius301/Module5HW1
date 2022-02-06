@@ -13,6 +13,11 @@ namespace Module5HW1
         public async Task Run()
         {
             var serviceProvider = new ServiceCollection()
+                .AddSingleton<HttpClientService>()
+                .AddScoped<ConfigureService>()
+                .AddTransient<AuthorizationService>()
+                .AddTransient<ResourceService>()
+                .AddTransient<UserService>()
                 .AddTransient<Application>()
                 .BuildServiceProvider();
 
