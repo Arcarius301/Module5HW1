@@ -17,7 +17,7 @@ namespace Module5HW1.Services
             _httpClient = new HttpClient();
         }
 
-        public async Task<string?> SendAsync(string url, HttpMethod httpMethod, string payload)
+        public async Task<string> SendAsync(string url, HttpMethod httpMethod, string payload)
         {
             var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
 
@@ -28,18 +28,10 @@ namespace Module5HW1.Services
 
             var result = await _httpClient.SendAsync(httpMessage);
 
-            if (result.StatusCode == HttpStatusCode.OK)
-            {
-                var response = await result.Content.ReadAsStringAsync();
-                return response;
-            }
-            else
-            {
-                return null;
-            }
+            return await result.Content.ReadAsStringAsync();
         }
 
-        public async Task<string?> SendAsync(string url, HttpMethod httpMethod)
+        public async Task<string> SendAsync(string url, HttpMethod httpMethod)
         {
             var httpMessage = new HttpRequestMessage();
             httpMessage.RequestUri = new Uri(url);
@@ -47,15 +39,7 @@ namespace Module5HW1.Services
 
             var result = await _httpClient.SendAsync(httpMessage);
 
-            if (result.StatusCode == HttpStatusCode.OK)
-            {
-                var responce = await result.Content.ReadAsStringAsync();
-                return responce;
-            }
-            else
-            {
-                return null;
-            }
+            return await result.Content.ReadAsStringAsync();
         }
     }
 }

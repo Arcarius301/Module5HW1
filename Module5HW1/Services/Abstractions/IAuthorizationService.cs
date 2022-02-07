@@ -8,7 +8,7 @@ namespace Module5HW1.Services.Abstractions
 {
     public interface IAuthorizationService
     {
-        public Task<string?> Register(string payload);
-        public Task<string?> Login(string payload);
+        public Task<string> Register(string payload);
+        public Task<string> Login(string payload);
     }
 }

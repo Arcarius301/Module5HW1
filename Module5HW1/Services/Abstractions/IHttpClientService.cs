@@ -9,7 +9,7 @@ namespace Module5HW1.Services.Abstractions
 {
     public interface IHttpClientService
     {
-        public Task<string?> SendAsync(string url, HttpMethod httpMethod, string payload);
-        public Task<string?> SendAsync(string url, HttpMethod httpMethod);
+        public Task<string> SendAsync(string url, HttpMethod httpMethod, string payload);
+        public Task<string> SendAsync(string url, HttpMethod httpMethod);
     }
 }

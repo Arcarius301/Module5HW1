@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Module5HW1.Services;
+using Module5HW1.Services.Abstractions;
 
 namespace Module5HW1
 {
@@ -13,11 +14,11 @@ namespace Module5HW1
         public async Task Run()
         {
             var serviceProvider = new ServiceCollection()
-                .AddSingleton<HttpClientService>()
-                .AddScoped<ConfigureService>()
-                .AddTransient<AuthorizationService>()
-                .AddTransient<ResourceService>()
-                .AddTransient<UserService>()
+                .AddSingleton<IHttpClientService, HttpClientService>()
+                .AddSingleton<IConfigureService, ConfigureService>()
+                .AddTransient<IAuthorizationService, AuthorizationService>()
+                .AddTransient<IResourceService, ResourceService>()
+                .AddTransient<IUserService, UserService>()
                 .AddTransient<Application>()
                 .BuildServiceProvider();
 

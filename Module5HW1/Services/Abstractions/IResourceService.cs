@@ -8,7 +8,7 @@ namespace Module5HW1.Services.Abstractions
 {
     public interface IResourceService
     {
-        public Task<string?> GetResources();
-        public Task<string?> GetResource(int id);
+        public Task<string> GetResources();
+        public Task<string> GetResource(int id);
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Module5HW1.Services.Abstractions;
+using Module5HW1.Models;
 
 namespace Module5HW1.Services
 {
@@ -20,12 +22,12 @@ namespace Module5HW1.Services
             _url = _configureService.AppSetting["url"];
         }
 
-        public async Task<string?> Register(string payload)
+        public async Task<string> Register(string payload)
         {
             return await _httpClientService.SendAsync(@$"{_url}/api/register", HttpMethod.Post, payload);
         }
 
-        public async Task<string?> Login(string payload)
+        public async Task<string> Login(string payload)
         {
             return await _httpClientService.SendAsync(@$"{_url}/api/login", HttpMethod.Post, payload);
         }
