@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Module5HW1.Services.Abstractions;
+using Module5HW1.Models;
 
 namespace Module5HW1.Services
 {
@@ -19,14 +20,14 @@ namespace Module5HW1.Services
             _url = _configureService.AppSetting["url"];
         }
 
-        public async Task<string> GetResources()
+        public async Task<ListResourcesResponse?> GetResources()
         {
-            return await _httpClientService.SendAsync(@$"{_url}/api/unknown", HttpMethod.Get);
+            return await _httpClientService.SendAsync<ListResourcesResponse>(@$"{_url}/api/unknown", HttpMethod.Get);
         }
 
-        public async Task<string> GetResource(int id)
+        public async Task<SingleResourceResponse?> GetResource(int id)
         {
-            return await _httpClientService.SendAsync(@$"{_url}/api/unknown/{id}", HttpMethod.Get);
+            return await _httpClientService.SendAsync<SingleResourceResponse>(@$"{_url}/api/unknown/{id}", HttpMethod.Get);
         }
     }
 }

@@ -22,14 +22,24 @@ namespace Module5HW1.Services
             _url = _configureService.AppSetting["url"];
         }
 
-        public async Task<string> Register(string payload)
+        public async Task<AuthorizationSuccessfulResponse?> RegisterSuccessful(AuthorizationSuccessfulRequest payload)
         {
-            return await _httpClientService.SendAsync(@$"{_url}/api/register", HttpMethod.Post, payload);
+            return await _httpClientService.SendAsync<AuthorizationSuccessfulResponse>(@$"{_url}/api/register", HttpMethod.Post, payload);
         }
 
-        public async Task<string> Login(string payload)
+        public async Task<AuthorizationUnsuccessfulResponse?> RegisterUnsuccessful(AuthorizationUnsuccessfulRequest payload)
         {
-            return await _httpClientService.SendAsync(@$"{_url}/api/login", HttpMethod.Post, payload);
+            return await _httpClientService.SendAsync<AuthorizationUnsuccessfulResponse>(@$"{_url}/api/register", HttpMethod.Post, payload);
+        }
+
+        public async Task<AuthorizationSuccessfulResponse?> LoginSuccessful(AuthorizationSuccessfulRequest payload)
+        {
+            return await _httpClientService.SendAsync<AuthorizationSuccessfulResponse>(@$"{_url}/api/login", HttpMethod.Post, payload);
+        }
+
+        public async Task<AuthorizationUnsuccessfulResponse?> LoginUnsuccessful(AuthorizationUnsuccessfulRequest payload)
+        {
+            return await _httpClientService.SendAsync<AuthorizationUnsuccessfulResponse>(@$"{_url}/api/login", HttpMethod.Post, payload);
         }
     }
 }
